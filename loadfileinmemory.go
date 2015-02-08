@@ -8,6 +8,7 @@ import (
     "fmt"
     "os"
     "bufio"
+    "strings"
 )
 
 // readLines reads a whole file into memory
@@ -37,12 +38,12 @@ func check(e error) {
 
 func main() {
 
-    horarios, err := readLines("/data/go/src/github.com/vitojph/bus/528.data")
+    lines, err := readLines("/data/go/src/github.com/vitojph/bus/528.data")
+    check(err)
 
-    if err == nil {
-        fmt.Println(horarios[:3])
-    } else {
-        panic(err)
+    for _, line := range lines {
+        cosas := strings.Split(line, ",")
+        fmt.Println(cosas[1])
     }
 
 }
